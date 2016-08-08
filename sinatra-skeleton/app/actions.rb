@@ -14,9 +14,9 @@ end
 
 post '/messages' do 
   @message = Message.new(
-    title: params[:title],  
-    content: params[:content],  
-    author: params[:author]
+    author: params[:author],  
+    content: params[:content],
+    url: params[:url]
   )
   if @message.save
     redirect :'/messages'
@@ -27,5 +27,6 @@ end
 
 get '/messages/:id' do
   @message = Message.find params[:id]
+  @other_messages = Message.where("author = ? AND id != ?", @message.author, @message.id)
   erb :'/messages/show'
 end

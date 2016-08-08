@@ -1,12 +1,15 @@
-<h1><%= @message.title %></h1>
+<h2><%= @message.author %></h2>
+<p><%= @message.content %></p>
+<p><%= @message.url %></p>
+<p><%= @message.created_at %></p>  
 
-<p>
-  <%= @message.author %>
-</p>
+<h1> Other messages </h1>
 
-<p>
-  <%= @message.content %>
-</p>
-
+<% @other_messages.each do |message| %>
+  <h2><%= message.author %></h2>
+  <p><%= message.content %></p>
+  <p><%= message.url %></p>
+  <p><%= message.created_at %></p>  
+<% end %>
 
 <a href="/messages"> Back to all messages </a>

@@ -4,11 +4,14 @@
 <% @messages.each do |message| %>
   <div class="message">
     <h3>
-      <a href="/messages/<%= message.id %>"><%= message.title %></a>
-      <small>( by : <%= message.author %> )</small>
+      <a href="messages/<%= message.id %>"><%= message.author %></a>
     </h3>
     <p>
       <%= message.content %>
+      <br>
+      <% if message.url %>
+      <a href="<%= message.url %>"><%= message.url %></a>
+      <% end %>
     </p>
   </div>
 <% end %>
